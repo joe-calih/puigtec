@@ -1,4 +1,4 @@
-# Blue Steel EQ v2.0.7
+# Blue Steel EQ v2.0.8
 
 ## Windows build correction
 
@@ -13,6 +13,8 @@
   non-const to match the host-state API.
 - Remove the unimplemented double-precision process override so the plugin
   uses JUCE's default single-precision processing contract.
+- Check the disabled clipper against its expected linear gain rather than an
+  unattainable three-times output ratio.
 
 ## Brand and design
 

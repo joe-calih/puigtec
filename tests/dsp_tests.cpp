@@ -176,7 +176,10 @@ void testSoftClipper()
     cleanProcessor.applyFactoryPreset(0);
     setValue(cleanProcessor, ParameterIDs::input, 12.0f);
     const auto cleanPeak = measureSine(cleanProcessor, 1000.0f, true);
-    check(cleanPeak > clippedPeak * 3.0f, "Disabling the clipper leaves the signal unclipped");
+    const auto expectedLinearPeak = 0.2f * juce::Decibels::decibelsToGain(12.0f);
+    check(
+        std::abs(cleanPeak - expectedLinearPeak) < 0.01f,
+        "Disabling the clipper preserves the full linear input gain");
 }
 
 void testBypass()
