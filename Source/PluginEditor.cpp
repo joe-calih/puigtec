@@ -1060,6 +1060,9 @@ void BlueSteelEQAudioProcessorEditor::showAboutMenu()
                 "JUCE framework: GNU AGPL-3.0-or-later.\n\n"
                 "The complete Blue Steel EQ and JUCE license notices are installed "
                 "with the plugin and available at github.com/joe-calih/puigtec.");
+            juce::URL(
+                "https://github.com/joe-calih/puigtec/blob/main/LICENSES/AGPL-3.0.txt")
+                .launchInDefaultBrowser();
         }
         else if (selected == 4)
         {

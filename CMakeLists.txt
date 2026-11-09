@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(BlueSteelEQ VERSION 2.0.0 LANGUAGES C CXX)
+project(BlueSteelEQ VERSION 2.0.1 LANGUAGES C CXX)
 
 include(FetchContent)
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
@@ -53,7 +53,11 @@ target_link_libraries(BlueSteelEQ
         juce::juce_recommended_warning_flags
 )
 
-add_executable(BlueSteelEQTests
+juce_add_console_app(BlueSteelEQTests
+    PRODUCT_NAME "Blue Steel EQ DSP Tests"
+)
+target_sources(BlueSteelEQTests
+    PRIVATE
     Source/PluginProcessor.cpp
     Source/PluginEditor.cpp
     tests/dsp_tests.cpp

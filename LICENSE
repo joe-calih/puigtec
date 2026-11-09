@@ -5,8 +5,8 @@ Copyright (c) 2026 Joe Calih and LOOPS.CO.KE
 This project and its source code are licensed under the GNU Affero General
 Public License, version 3 only. The complete license text is available at:
 
-https://www.gnu.org/licenses/agpl-3.0.en.html
+LICENSES/AGPL-3.0.txt
 
-This application uses JUCE, which is also distributed under the GNU
-Affero General Public License, version 3. See the upstream JUCE license
-for the applicable third-party copyright and notice requirements.
+This application uses JUCE 8.0.6 under its GNU AGPLv3 open-source license.
+The complete upstream JUCE license, with its third-party copyright and
+dependency notices, is included in the Windows installer and app download.

@@ -1,4 +1,4 @@
-# Blue Steel EQ v2.0.0
+# Blue Steel EQ v2.0.1
 
 ## Brand and design
 
@@ -35,6 +35,8 @@ the plugin:
 These are original, editable tonal starting points, not samples, official
 hardware emulations or endorsements from SSL or any other third party.
 The host's preset menu correctly recalls and displays all 13 programs.
+The SSL-style presets apply original EQ curves; this is not a compressor,
+tape emulation or official SSL product.
 
 ## Workflow and installation
 
@@ -62,6 +64,6 @@ filters, gain staging, bypass, the clipping ceiling, all 13 factory presets,
 and saving/restoring parameter and window-scale state.
 
 The Windows CI workflow builds the 64-bit Release VST3, standalone
-application, DSP tests and compressed installer. Published v2 installers
-are attached to the GitHub
-[v2.0.0 release](https://github.com/joe-calih/puigtec/releases/tag/v2.0.0).
+application, DSP tests and compressed installer. The v2.0.1 release builds
+the VST3, standalone package, and Windows installer, and passes the
+measured-frequency, gain, clipping, preset, and host-state DSP tests.

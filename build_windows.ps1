@@ -128,19 +128,27 @@ if (-not (Test-Path -LiteralPath $juceLicense)) {
 }
 Copy-Item -LiteralPath $juceLicense `
     -Destination (Join-Path $stagingRoot 'Standalone\JUCE-LICENSE.md') -Force
+Copy-Item -LiteralPath (Join-Path $projectRoot 'LICENSES\AGPL-3.0.txt') `
+    -Destination (Join-Path $stagingRoot 'Standalone\AGPL-3.0.txt') -Force
 
 $outputDirectory = Join-Path $projectRoot 'installer\output'
 New-Item -ItemType Directory -Force -Path $outputDirectory | Out-Null
 $distributionArchives = @(
     @{
         Name = 'Blue-Steel-EQ-VST3.zip'
-        Sources = @($stagedPlugin)
+        Sources = @(
+            $stagedPlugin,
+            (Join-Path $projectRoot 'LICENSE'),
+            (Join-Path $projectRoot 'LICENSES\AGPL-3.0.txt'),
+            (Join-Path $stagingRoot 'Standalone\JUCE-LICENSE.md')
+        )
     },
     @{
         Name = 'Blue-Steel-EQ-Standalone.zip'
         Sources = @(
             $stagedApp,
             (Join-Path $projectRoot 'LICENSE'),
+            (Join-Path $projectRoot 'LICENSES\AGPL-3.0.txt'),
             (Join-Path $stagingRoot 'Standalone\JUCE-LICENSE.md'),
             (Join-Path $projectRoot 'README.md'),
             (Join-Path $projectRoot 'docs\V2-RELEASE-NOTES.md')

@@ -37,7 +37,7 @@ Windows installer as a downloadable Release asset.
 - **About** menu with LOOPS.CO.KE company details, complete license
   information and direct links to the website and manual.
 
-See [v2.0.0 release notes](./docs/V2-RELEASE-NOTES.md) for all changes.
+See the [version 2 release notes](./docs/V2-RELEASE-NOTES.md) for all changes.
 The SSL-style presets apply original EQ curves; this is not a compressor,
 tape emulation or official SSL product.
 
@@ -91,7 +91,8 @@ are connected to the same parameters that the plugin processes.
 
 ## License
 
-This project is licensed under AGPL-3.0-only. See [LICENSE](./LICENSE) and
-the [JUCE license](https://github.com/juce-framework/JUCE/blob/8.0.6/LICENSE.md).
-The JUCE dependency is fetched at the pinned release tag; it is not copied
-into this repository.
+This project and its source code are licensed under GNU AGPL-3.0-only; the
+complete text is in [LICENSES/AGPL-3.0.txt](./LICENSES/AGPL-3.0.txt).
+JUCE is used under AGPLv3; its upstream license and third-party notices
+are included with the Windows downloads and installer. JUCE source is
+fetched at the pinned 8.0.6 release tag rather than vendored in this repo.
