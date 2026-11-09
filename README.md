@@ -20,7 +20,7 @@ Steel EQ v2** from the Effects list. The installer offers to open
 loops.co.ke when installation completes.
 
 The GitHub Actions workflow builds the installer automatically when a
-version tag (for example `v2.0.6`) is pushed and publishes the verified
+version tag (for example `v2.0.7`) is pushed and publishes the verified
 Windows installer as a downloadable Release asset.
 
 ## v2 presets and controls

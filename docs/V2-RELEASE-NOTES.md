@@ -1,4 +1,4 @@
-# Blue Steel EQ v2.0.6
+# Blue Steel EQ v2.0.7
 
 ## Windows build correction
 
@@ -11,6 +11,8 @@
   thread-safe const refresh operation.
 - Use JUCE's supported line drawing overloads and make state snapshots
   non-const to match the host-state API.
+- Remove the unimplemented double-precision process override so the plugin
+  uses JUCE's default single-precision processing contract.
 
 ## Brand and design
 
