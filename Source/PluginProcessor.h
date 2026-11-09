@@ -111,7 +111,7 @@ private:
     double currentSampleRate = 44100.0;
     std::array<FilterPair, 8> filters;
     std::array<float, ParameterIDs::count> lastFilterParameters{};
-    std::array<std::atomic<float>, 128> responseCurve{};
+    mutable std::array<std::atomic<float>, 128> responseCurve{};
     bool filtersInitialized = false;
     std::atomic<int> currentProgram{0};
     std::atomic<float> inputPeak{0.0f};

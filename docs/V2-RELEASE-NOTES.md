@@ -1,4 +1,4 @@
-# Blue Steel EQ v2.0.4
+# Blue Steel EQ v2.0.5
 
 ## Windows build correction
 
@@ -7,6 +7,8 @@
 - Rename the custom UI color palette to avoid a symbol collision with JUCE.
 - Use supported JUCE color blending and keep component bounds mutable while
   splitting layout regions.
+- Mark the atomically published response-curve cache as mutable for its
+  thread-safe const refresh operation.
 
 ## Brand and design
 
