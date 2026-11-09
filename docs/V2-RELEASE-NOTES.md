@@ -1,4 +1,9 @@
-# Blue Steel EQ v2.0.1
+# Blue Steel EQ v2.0.2
+
+## Windows build correction
+
+- Generate JUCE's configuration header for both the production plugin and
+  the DSP test app so the plugin sources compile in a clean Windows build.
 
 ## Brand and design
 
@@ -64,6 +69,6 @@ filters, gain staging, bypass, the clipping ceiling, all 13 factory presets,
 and saving/restoring parameter and window-scale state.
 
 The Windows CI workflow builds the 64-bit Release VST3, standalone
-application, DSP tests and compressed installer. The v2.0.1 release builds
-the VST3, standalone package, and Windows installer, and passes the
-measured-frequency, gain, clipping, preset, and host-state DSP tests.
+application, DSP tests and compressed installer. The DSP tests cover
+measured-frequency response, gain, clipping, presets, and host-state
+restoration.

@@ -52,7 +52,7 @@ jobs:
       - name: Save installer artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Blue-Steel-EQ-v2.0.0-Windows
+          name: Blue-Steel-EQ-${{ github.ref_name }}-Windows
           path: |
             installer/output/Blue-Steel-EQ-Setup.exe
             installer/output/Blue-Steel-EQ-VST3.zip
