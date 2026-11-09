@@ -7,7 +7,7 @@
 
 namespace
 {
-namespace Colours
+namespace Palette
 {
 const juce::Colour midnight{0xff10171a};
 const juce::Colour ink{0xff18262c};
@@ -59,7 +59,7 @@ void drawRivet(juce::Graphics& graphics, float centerX, float centerY)
     const auto bounds = juce::Rectangle<float>(
         centerX - diameter * 0.5f, centerY - diameter * 0.5f, diameter, diameter);
 
-    graphics.setColour(Colours::midnight.withAlpha(0.55f));
+    graphics.setColour(Palette::midnight.withAlpha(0.55f));
     graphics.fillEllipse(bounds.translated(1.0f, 1.0f));
 
     graphics.setGradientFill(juce::ColourGradient(
@@ -122,7 +122,7 @@ void drawPanel(
     graphics.drawRoundedRectangle(bounds.reduced(0.5f), 9.0f, 1.0f);
 
     const auto headingBounds = bounds.removeFromTop(25.0f);
-    graphics.setColour(Colours::ink.withAlpha(0.72f));
+    graphics.setColour(Palette::ink.withAlpha(0.72f));
     graphics.setFont(makeFont(10.0f, true));
     graphics.drawFittedText(
         title.toUpperCase(),
@@ -143,12 +143,12 @@ void drawPanel(
 BlueSteelLookAndFeel::BlueSteelLookAndFeel()
 {
     setColour(juce::ComboBox::backgroundColourId, juce::Colour{0xff172329});
-    setColour(juce::ComboBox::textColourId, Colours::ivory);
-    setColour(juce::ComboBox::outlineColourId, Colours::steelLight.withAlpha(0.8f));
-    setColour(juce::ComboBox::arrowColourId, Colours::turquoise);
-    setColour(juce::PopupMenu::backgroundColourId, Colours::ink);
-    setColour(juce::PopupMenu::textColourId, Colours::ivory);
-    setColour(juce::PopupMenu::highlightedBackgroundColourId, Colours::steelDark);
+    setColour(juce::ComboBox::textColourId, Palette::ivory);
+    setColour(juce::ComboBox::outlineColourId, Palette::steelLight.withAlpha(0.8f));
+    setColour(juce::ComboBox::arrowColourId, Palette::turquoise);
+    setColour(juce::PopupMenu::backgroundColourId, Palette::ink);
+    setColour(juce::PopupMenu::textColourId, Palette::ivory);
+    setColour(juce::PopupMenu::highlightedBackgroundColourId, Palette::steelDark);
     setColour(juce::PopupMenu::highlightedTextColourId, juce::Colours::white);
 }
 
@@ -177,7 +177,7 @@ void BlueSteelLookAndFeel::drawRotarySlider(
     graphics.setColour(juce::Colours::black.withAlpha(0.45f));
     graphics.fillEllipse(bounds.translated(1.0f, 2.0f));
 
-    graphics.setColour(Colours::midnight.withAlpha(0.75f));
+    graphics.setColour(Palette::midnight.withAlpha(0.75f));
     graphics.fillEllipse(bounds.expanded(3.0f));
 
     graphics.setGradientFill(juce::ColourGradient(
@@ -203,8 +203,8 @@ void BlueSteelLookAndFeel::drawRotarySlider(
 
         graphics.setColour(
             tick % 5 == 0
-                ? Colours::ivory.withAlpha(0.8f)
-                : Colours::ink.withAlpha(0.55f));
+                ? Palette::ivory.withAlpha(0.8f)
+                : Palette::ink.withAlpha(0.55f));
         graphics.drawLine(
             innerPoint.getX(), innerPoint.getY(),
             outerPoint.getX(), outerPoint.getY(),
@@ -229,12 +229,12 @@ void BlueSteelLookAndFeel::drawRotarySlider(
     graphics.drawLine(indicatorStart, indicatorEnd, 3.5f);
     graphics.setColour(juce::Colour{0xff929994}.withAlpha(0.95f));
     graphics.drawLine(indicatorStart, indicatorEnd, 1.5f);
-    graphics.setColour(Colours::ivory.withAlpha(0.95f));
+    graphics.setColour(Palette::ivory.withAlpha(0.95f));
     graphics.drawLine(
         indicatorStart - indicatorOffset * 0.7f,
         indicatorEnd - indicatorOffset * 0.7f,
         0.75f);
-    graphics.setColour(Colours::steelLight.withAlpha(0.75f));
+    graphics.setColour(Palette::steelLight.withAlpha(0.75f));
     graphics.drawLine(center, center + indicatorDirection * (radius * 0.27f), 1.0f);
 
     const auto hub = juce::Rectangle<float>(center.x - 7.0f, center.y - 7.0f, 14.0f, 14.0f);
@@ -243,9 +243,9 @@ void BlueSteelLookAndFeel::drawRotarySlider(
         juce::Colour{0xff353d40}, center.getX() + 5.0f, center.getY() + 5.0f,
         false));
     graphics.fillEllipse(hub);
-    graphics.setColour(Colours::midnight.withAlpha(0.75f));
+    graphics.setColour(Palette::midnight.withAlpha(0.75f));
     graphics.fillEllipse(hub.reduced(3.0f));
-    graphics.setColour(Colours::turquoise.withAlpha(0.9f));
+    graphics.setColour(Palette::turquoise.withAlpha(0.9f));
     graphics.fillEllipse(juce::Rectangle<float>(center.x - 1.2f, center.y - 1.2f, 2.4f, 2.4f));
 }
 
@@ -258,11 +258,11 @@ void BlueSteelLookAndFeel::drawButtonBackground(
 {
     auto bounds = button.getLocalBounds().toFloat().reduced(1.0f);
     const auto base = button.getToggleState()
-        ? Colours::steelDark
+        ? Palette::steelDark
         : backgroundColour;
     const auto highlight = isButtonDown || button.getToggleState()
-        ? Colours::turquoise.withAlpha(0.32f)
-        : Colours::steelLight.withAlpha(isMouseOverButton ? 0.24f : 0.08f);
+        ? Palette::turquoise.withAlpha(0.32f)
+        : Palette::steelLight.withAlpha(isMouseOverButton ? 0.24f : 0.08f);
 
     graphics.setColour(juce::Colours::black.withAlpha(0.35f));
     graphics.fillRoundedRectangle(bounds.translated(0.0f, 1.0f), 6.0f);
@@ -274,7 +274,7 @@ void BlueSteelLookAndFeel::drawButtonBackground(
         false));
     graphics.fillRoundedRectangle(bounds, 6.0f);
 
-    graphics.setColour(Colours::ivory.withAlpha(isMouseOverButton ? 0.7f : 0.35f));
+    graphics.setColour(Palette::ivory.withAlpha(isMouseOverButton ? 0.7f : 0.35f));
     graphics.drawRoundedRectangle(bounds, 6.0f, 0.9f);
 }
 
@@ -316,7 +316,7 @@ void BlueSteelLookAndFeel::drawToggleButton(
     graphics.fillEllipse(led.reduced(4.0f));
 
     graphics.setColour(
-        isButtonDown ? Colours::turquoise : Colours::ivory.withAlpha(isMouseOverButton ? 1.0f : 0.86f));
+        isButtonDown ? Palette::turquoise : Palette::ivory.withAlpha(isMouseOverButton ? 1.0f : 0.86f));
     graphics.setFont(makeFont(10.0f, true));
     graphics.drawFittedText(
         button.getButtonText(),
@@ -349,13 +349,13 @@ void BlueSteelLookAndFeel::drawComboBox(
 
     graphics.setGradientFill(juce::ColourGradient(
         juce::Colour{0xff273841}, 0.0f, 1.0f,
-        isButtonDown ? juce::Colour{0xff304853} : Colours::midnight,
+        isButtonDown ? juce::Colour{0xff304853} : Palette::midnight,
         0.0f, static_cast<float>(height),
         false));
     graphics.fillRoundedRectangle(bounds, 6.0f);
 
     graphics.setColour(
-        comboBox.hasKeyboardFocus(false) ? Colours::turquoise : Colours::steelLight.withAlpha(0.7f));
+        comboBox.hasKeyboardFocus(false) ? Palette::turquoise : Palette::steelLight.withAlpha(0.7f));
     graphics.drawRoundedRectangle(bounds, 6.0f, 1.0f);
 
     const auto arrowX = static_cast<float>(width) - 22.0f;
@@ -364,7 +364,7 @@ void BlueSteelLookAndFeel::drawComboBox(
     arrow.startNewSubPath(arrowX - 4.0f, arrowY - 2.0f);
     arrow.lineTo(arrowX, arrowY + 2.5f);
     arrow.lineTo(arrowX + 4.0f, arrowY - 2.0f);
-    graphics.setColour(Colours::turquoise.withAlpha(0.95f));
+    graphics.setColour(Palette::turquoise.withAlpha(0.95f));
     graphics.strokePath(arrow, juce::PathStrokeType(1.5f));
 }
 
@@ -373,9 +373,9 @@ void BlueSteelLookAndFeel::drawPopupMenuBackground(
     int width,
     int height)
 {
-    graphics.setColour(Colours::ink);
+    graphics.setColour(Palette::ink);
     graphics.fillAll();
-    graphics.setColour(Colours::steelLight.withAlpha(0.55f));
+    graphics.setColour(Palette::steelLight.withAlpha(0.55f));
     graphics.drawRect(0, 0, width, height, 1);
 }
 
@@ -394,12 +394,12 @@ public:
     {
         caption.setText(title.toUpperCase(), juce::dontSendNotification);
         caption.setJustificationType(juce::Justification::centred);
-        caption.setColour(juce::Label::textColourId, Colours::muted);
+        caption.setColour(juce::Label::textColourId, Palette::muted);
         caption.setFont(makeFont(9.0f, true));
         addAndMakeVisible(caption);
 
         value.setJustificationType(juce::Justification::centred);
-        value.setColour(juce::Label::textColourId, Colours::ivory);
+        value.setColour(juce::Label::textColourId, Palette::ivory);
         value.setFont(makeFont(9.0f));
         addAndMakeVisible(value);
 
@@ -410,9 +410,9 @@ public:
             juce::MathConstants<float>::pi * 2.75f,
             true);
         slider.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
-        slider.setColour(juce::Slider::rotarySliderOutlineColourId, Colours::steelLight);
-        slider.setColour(juce::Slider::rotarySliderFillColourId, Colours::turquoise);
-        slider.setColour(juce::Slider::thumbColourId, Colours::ivory);
+        slider.setColour(juce::Slider::rotarySliderOutlineColourId, Palette::steelLight);
+        slider.setColour(juce::Slider::rotarySliderFillColourId, Palette::turquoise);
+        slider.setColour(juce::Slider::thumbColourId, Palette::ivory);
 
         if (choices.isEmpty())
         {
@@ -525,7 +525,7 @@ public:
         const auto panel = bounds.reduced(2.0f);
         graphics.setColour(juce::Colours::black.withAlpha(0.75f));
         graphics.fillRoundedRectangle(panel, 7.0f);
-        graphics.setColour(Colours::ivory.withAlpha(0.2f));
+        graphics.setColour(Palette::ivory.withAlpha(0.2f));
         graphics.drawRoundedRectangle(panel, 7.0f, 1.0f);
 
         const auto plot = panel.reduced(30.0f, 25.0f);
@@ -547,12 +547,12 @@ public:
         {
             const auto y = dbToY(static_cast<float>(decibels));
             graphics.setColour(decibels == 0
-                ? Colours::ivory.withAlpha(0.36f)
-                : Colours::ivory.withAlpha(0.15f));
+                ? Palette::ivory.withAlpha(0.36f)
+                : Palette::ivory.withAlpha(0.15f));
             graphics.drawHorizontalLine(
                 juce::roundToInt(y), plot.getX(), plot.getRight());
             graphics.setFont(makeFont(8.0f));
-            graphics.setColour(Colours::muted.withAlpha(0.88f));
+            graphics.setColour(Palette::muted.withAlpha(0.88f));
             graphics.drawText(
                 juce::String(decibels),
                 juce::Rectangle<int>(
@@ -567,10 +567,10 @@ public:
         {
             const auto frequency = frequencyForResponseLabel(frequencyIndex);
             const auto x = xForFrequency(frequency);
-            graphics.setColour(Colours::ivory.withAlpha(0.14f));
+            graphics.setColour(Palette::ivory.withAlpha(0.14f));
             graphics.drawVerticalLine(
                 juce::roundToInt(x), plot.getY(), plot.getBottom());
-            graphics.setColour(Colours::muted.withAlpha(0.9f));
+            graphics.setColour(Palette::muted.withAlpha(0.9f));
             graphics.setFont(makeFont(7.5f));
             graphics.drawFittedText(
                 formatFrequency(frequency),
@@ -602,16 +602,16 @@ public:
         fill.lineTo(plot.getRight(), dbToY(0.0f));
         fill.lineTo(plot.getX(), dbToY(0.0f));
         fill.closeSubPath();
-        graphics.setColour(Colours::turquoise.withAlpha(0.12f));
+        graphics.setColour(Palette::turquoise.withAlpha(0.12f));
         graphics.fillPath(fill);
-        graphics.setColour(Colours::midnight.withAlpha(0.8f));
+        graphics.setColour(Palette::midnight.withAlpha(0.8f));
         graphics.strokePath(response, juce::PathStrokeType(4.0f));
-        graphics.setColour(Colours::turquoise);
+        graphics.setColour(Palette::turquoise);
         graphics.strokePath(response, juce::PathStrokeType(1.8f));
 
         drawMeters(graphics, panel);
 
-        graphics.setColour(Colours::ivory.withAlpha(0.78f));
+        graphics.setColour(Palette::ivory.withAlpha(0.78f));
         graphics.setFont(makeFont(8.0f, true));
         graphics.drawText(
             "EQ RESPONSE",
@@ -633,14 +633,14 @@ private:
             if (level > 0.0f)
             {
                 graphics.setGradientFill(juce::ColourGradient(
-                    Colours::turquoise, x, meterY,
-                    level > 0.88f ? Colours::red : Colours::amber,
+                    Palette::turquoise, x, meterY,
+                    level > 0.88f ? Palette::red : Palette::amber,
                     x + juce::jmax(1.0f, level), meterY,
                     false));
                 graphics.fillRoundedRectangle(x, meterY, juce::jmax(1.0f, level), 5.0f, 2.0f);
             }
 
-            graphics.setColour(Colours::muted);
+            graphics.setColour(Palette::muted);
             graphics.setFont(makeFont(7.0f, true));
             graphics.drawText(
                 name,
@@ -724,7 +724,7 @@ BlueSteelEQAudioProcessorEditor::BlueSteelEQAudioProcessorEditor(
     addAndMakeVisible(presetSelector);
 
     powerButton.setClickingTogglesState(true);
-    powerButton.setColour(juce::ToggleButton::tickColourId, Colours::turquoise);
+    powerButton.setColour(juce::ToggleButton::tickColourId, Palette::turquoise);
     powerButton.setTooltip("Bypass the entire processor");
     powerButton.setToggleState(
         audioProcessor.getParameterValue(ParameterIDs::bypass) < 0.5f,
@@ -736,7 +736,7 @@ BlueSteelEQAudioProcessorEditor::BlueSteelEQAudioProcessorEditor(
     addAndMakeVisible(powerButton);
 
     clipperButton.setClickingTogglesState(true);
-    clipperButton.setColour(juce::ToggleButton::tickColourId, Colours::amber);
+    clipperButton.setColour(juce::ToggleButton::tickColourId, Palette::amber);
     clipperButton.setTooltip("Enable or disable the analog-style soft clipper");
     clipperButton.setToggleState(
         audioProcessor.getParameterValue(ParameterIDs::clipperEnabled) >= 0.5f,
@@ -756,10 +756,10 @@ BlueSteelEQAudioProcessorEditor::BlueSteelEQAudioProcessorEditor(
              &snapshotAButton, &snapshotBButton, &storeButton, &aboutButton,
              &undoButton, &redoButton})
     {
-        button->setColour(juce::TextButton::buttonColourId, Colours::ink);
-        button->setColour(juce::TextButton::buttonOnColourId, Colours::steelDark);
-        button->setColour(juce::TextButton::textColourOffId, Colours::ivory);
-        button->setColour(juce::TextButton::textColourOnId, Colours::turquoise);
+        button->setColour(juce::TextButton::buttonColourId, Palette::ink);
+        button->setColour(juce::TextButton::buttonOnColourId, Palette::steelDark);
+        button->setColour(juce::TextButton::textColourOffId, Palette::ivory);
+        button->setColour(juce::TextButton::textColourOnId, Palette::turquoise);
         addAndMakeVisible(*button);
     }
 
@@ -869,7 +869,7 @@ void BlueSteelEQAudioProcessorEditor::paint(juce::Graphics& graphics)
     {
         const auto band = static_cast<float>((row * 17) % 31) / 31.0f;
         graphics.setColour(
-            (row % 2 == 0 ? juce::Colours::white : Colours::ink)
+            (row % 2 == 0 ? juce::Colours::white : Palette::ink)
                 .withAlpha(0.012f + band * 0.009f));
         graphics.drawHorizontalLine(row, 0.0f, designWidth);
     }
@@ -880,24 +880,24 @@ void BlueSteelEQAudioProcessorEditor::paint(juce::Graphics& graphics)
         juce::Colour{0xff101619}, heading.getRight(), heading.getBottom(),
         false));
     graphics.fillRoundedRectangle(heading, 6.0f);
-    graphics.setColour(Colours::steelLight.withAlpha(0.55f));
+    graphics.setColour(Palette::steelLight.withAlpha(0.55f));
     graphics.drawRoundedRectangle(heading, 6.0f, 1.0f);
 
-    graphics.setColour(Colours::turquoise);
+    graphics.setColour(Palette::turquoise);
     graphics.fillRoundedRectangle(heading.getX() + 10.0f, heading.getY() + 11.0f, 3.0f, 19.0f, 1.4f);
-    graphics.setColour(Colours::ivory);
+    graphics.setColour(Palette::ivory);
     graphics.setFont(    makeFont(17.0f, true));
     graphics.drawText(
         "BLUE STEEL",
         juce::Rectangle<int>(24, 9, 185, 23),
         juce::Justification::centredLeft);
-    graphics.setColour(Colours::muted);
+    graphics.setColour(Palette::muted);
     graphics.setFont(makeFont(8.0f, true));
     graphics.drawText(
         "FREQUENCY SHAPER  /  V2.0",
         juce::Rectangle<int>(26, 31, 220, 12),
         juce::Justification::centredLeft);
-    graphics.setColour(Colours::ivory.withAlpha(0.83f));
+    graphics.setColour(Palette::ivory.withAlpha(0.83f));
     graphics.setFont(makeFont(9.0f, true));
     graphics.drawText(
         "PREMIUM EQ  /  LOOPS.CO.KE",
@@ -906,24 +906,24 @@ void BlueSteelEQAudioProcessorEditor::paint(juce::Graphics& graphics)
 
     drawPanel(
         graphics, juce::Rectangle<float>(18.0f, 66.0f, designWidth - 36.0f, 174.0f),
-        "GAIN / IN LEVEL / OUT LEVEL  •  ANALOG STAGE", Colours::turquoise);
+        "GAIN / IN LEVEL / OUT LEVEL  •  ANALOG STAGE", Palette::turquoise);
     drawPanel(
         graphics, juce::Rectangle<float>(18.0f, 250.0f, 420.0f, 176.0f),
-        "LOW END  •  SHELF + ATTENUATION", Colours::amber);
+        "LOW END  •  SHELF + ATTENUATION", Palette::amber);
     drawPanel(
         graphics, juce::Rectangle<float>(448.0f, 250.0f, designWidth - 466.0f, 176.0f),
-        "PEAK PRODUCTION  •  MID PEAK + DIP", Colours::turquoise);
+        "PEAK PRODUCTION  •  MID PEAK + DIP", Palette::turquoise);
     drawPanel(
         graphics, juce::Rectangle<float>(18.0f, 436.0f, 728.0f, 176.0f),
-        "HIGH SHAPE  •  PRESENCE + ATTENUATION", Colours::amber);
+        "HIGH SHAPE  •  PRESENCE + ATTENUATION", Palette::amber);
     drawPanel(
         graphics, juce::Rectangle<float>(756.0f, 436.0f, designWidth - 774.0f, 176.0f),
-        "CUT FILTERS", Colours::red);
+        "CUT FILTERS", Palette::red);
 
     const auto footerY = 640;
-    graphics.setColour(Colours::ink.withAlpha(0.84f));
+    graphics.setColour(Palette::ink.withAlpha(0.84f));
     graphics.drawHorizontalLine(footerY - 8, 22.0f, designWidth - 22.0f);
-    graphics.setColour(Colours::muted.withAlpha(0.9f));
+    graphics.setColour(Palette::muted.withAlpha(0.9f));
     graphics.setFont(makeFont(8.0f));
     graphics.drawText(
         "DOUBLE-CLICK ANY CONTROL TO RESET    •    ALL KNOBS SUPPORT HOST AUTOMATION",
@@ -1092,16 +1092,16 @@ void BlueSteelEQAudioProcessorEditor::selectSnapshot(bool useA)
     auto& otherButton = useA ? snapshotBButton : snapshotAButton;
     button.setColour(
         juce::TextButton::buttonColourId,
-        Colours::steelDark);
+        Palette::steelDark);
     button.setColour(
         juce::TextButton::textColourOffId,
-        Colours::turquoise);
+        Palette::turquoise);
     otherButton.setColour(
         juce::TextButton::buttonColourId,
-        Colours::ink);
+        Palette::ink);
     otherButton.setColour(
         juce::TextButton::textColourOffId,
-        Colours::ivory);
+        Palette::ivory);
 
     const auto& state = useA ? snapshotA : snapshotB;
     if (state.isValid())

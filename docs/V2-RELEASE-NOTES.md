@@ -1,9 +1,10 @@
-# Blue Steel EQ v2.0.2
+# Blue Steel EQ v2.0.3
 
 ## Windows build correction
 
 - Generate JUCE's configuration header for both the production plugin and
   the DSP test app so the plugin sources compile in a clean Windows build.
+- Rename the custom UI color palette to avoid a symbol collision with JUCE.
 
 ## Brand and design
 
