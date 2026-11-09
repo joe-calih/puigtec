@@ -1,0 +1,60 @@
+name: Windows release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Windows VST3 and installer
+    runs-on: windows-2022
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Set up CMake
+        uses: lukka/get-cmake@latest
+
+      - name: Install Inno Setup
+        run: choco install innosetup --yes --no-progress --limit-output
+
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build plugin, app, and tests
+        run: cmake --build build --config Release --parallel 2
+
+      - name: Run DSP tests
+        run: ctest --test-dir build -C Release --output-on-failure
+
+      - name: Package Windows installer
+        shell: pwsh
+        run: .\build_windows.ps1 -SkipBuild -RequireInstaller
+
+      - name: Publish release installer
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            installer/output/Blue-Steel-EQ-Setup.exe
+            installer/output/Blue-Steel-EQ-VST3.zip
+            installer/output/Blue-Steel-EQ-Standalone.zip
+
+      - name: Save installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Blue-Steel-EQ-v2.0.0-Windows
+          path: |
+            installer/output/Blue-Steel-EQ-Setup.exe
+            installer/output/Blue-Steel-EQ-VST3.zip
+            installer/output/Blue-Steel-EQ-Standalone.zip
+          if-no-files-found: error

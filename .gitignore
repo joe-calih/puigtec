@@ -1,0 +1,15 @@
+/build/
+/stage/
+/_deps/
+/.vs/
+/out/
+*.user
+*.suo
+*.pdb
+*.ilk
+*.obj
+*.lib
+*.exp
+*.vst3/
+/installer/output/
+/installer/staging/
