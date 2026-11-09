@@ -82,7 +82,7 @@ public:
 
     void setParameterValue(const juce::String& id, float value);
     void setUiScale(float scale) noexcept;
-    juce::ValueTree copyCurrentState() const;
+    juce::ValueTree copyCurrentState();
     void restoreState(const juce::ValueTree& state);
     void refreshFrequencyResponse() const;
 

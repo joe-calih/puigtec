@@ -222,20 +222,32 @@ void BlueSteelLookAndFeel::drawRotarySlider(
 
     graphics.setColour(juce::Colours::black.withAlpha(0.88f));
     graphics.drawLine(
-        indicatorStart + indicatorOffset * 1.0f,
-        indicatorEnd + indicatorOffset * 1.0f,
+        (indicatorStart + indicatorOffset * 1.0f).getX(),
+        (indicatorStart + indicatorOffset * 1.0f).getY(),
+        (indicatorEnd + indicatorOffset * 1.0f).getX(),
+        (indicatorEnd + indicatorOffset * 1.0f).getY(),
         5.0f);
     graphics.setColour(juce::Colour{0xff171c1e});
-    graphics.drawLine(indicatorStart, indicatorEnd, 3.5f);
+    graphics.drawLine(
+        indicatorStart.getX(), indicatorStart.getY(),
+        indicatorEnd.getX(), indicatorEnd.getY(), 3.5f);
     graphics.setColour(juce::Colour{0xff929994}.withAlpha(0.95f));
-    graphics.drawLine(indicatorStart, indicatorEnd, 1.5f);
+    graphics.drawLine(
+        indicatorStart.getX(), indicatorStart.getY(),
+        indicatorEnd.getX(), indicatorEnd.getY(), 1.5f);
     graphics.setColour(Palette::ivory.withAlpha(0.95f));
     graphics.drawLine(
-        indicatorStart - indicatorOffset * 0.7f,
-        indicatorEnd - indicatorOffset * 0.7f,
+        (indicatorStart - indicatorOffset * 0.7f).getX(),
+        (indicatorStart - indicatorOffset * 0.7f).getY(),
+        (indicatorEnd - indicatorOffset * 0.7f).getX(),
+        (indicatorEnd - indicatorOffset * 0.7f).getY(),
         0.75f);
     graphics.setColour(Palette::steelLight.withAlpha(0.75f));
-    graphics.drawLine(center, center + indicatorDirection * (radius * 0.27f), 1.0f);
+    graphics.drawLine(
+        center.getX(), center.getY(),
+        (center + indicatorDirection * (radius * 0.27f)).getX(),
+        (center + indicatorDirection * (radius * 0.27f)).getY(),
+        1.0f);
 
     const auto hub = juce::Rectangle<float>(center.x - 7.0f, center.y - 7.0f, 14.0f, 14.0f);
     graphics.setGradientFill(juce::ColourGradient(

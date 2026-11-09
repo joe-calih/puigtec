@@ -360,7 +360,7 @@ void BlueSteelEQAudioProcessor::setUiScale(float scale) noexcept
     uiScale.store(juce::jlimit(0.7f, 2.0f, scale), std::memory_order_relaxed);
 }
 
-juce::ValueTree BlueSteelEQAudioProcessor::copyCurrentState() const
+juce::ValueTree BlueSteelEQAudioProcessor::copyCurrentState()
 {
     auto state = parameters.copyState();
     state.setProperty("uiScale", getUiScale(), nullptr);

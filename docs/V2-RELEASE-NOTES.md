@@ -1,4 +1,4 @@
-# Blue Steel EQ v2.0.5
+# Blue Steel EQ v2.0.6
 
 ## Windows build correction
 
@@ -9,6 +9,8 @@
   splitting layout regions.
 - Mark the atomically published response-curve cache as mutable for its
   thread-safe const refresh operation.
+- Use JUCE's supported line drawing overloads and make state snapshots
+  non-const to match the host-state API.
 
 ## Brand and design
 

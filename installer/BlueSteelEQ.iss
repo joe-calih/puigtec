@@ -3,7 +3,7 @@
 [Setup]
 AppId={{8E184880-07B3-4DFB-8DC9-AFF98F69FA87}
 AppName=Blue Steel EQ
-AppVersion=2.0.5
+AppVersion=2.0.6
 AppPublisher=LOOPS.CO.KE
 AppPublisherURL=https://loops.co.ke
 AppSupportURL=https://loops.co.ke/contact
@@ -34,7 +34,7 @@ Source: "{#StageRoot}\Standalone\JUCE-LICENSE.md"; DestDir: "{app}"; DestName: "
 Source: "..\LICENSE"; DestDir: "{app}"; DestName: "License.txt"; Flags: ignoreversion
 Source: "{#StageRoot}\Standalone\AGPL-3.0.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\README.md"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\docs\V2-RELEASE-NOTES.md"; DestDir: "{app}"; DestName: "Version-2.0.5-Release-Notes.md"; Flags: ignoreversion
+Source: "..\docs\V2-RELEASE-NOTES.md"; DestDir: "{app}"; DestName: "Version-2.0.6-Release-Notes.md"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\Blue Steel EQ v2"; Filename: "{app}\Blue Steel EQ v2.exe"
