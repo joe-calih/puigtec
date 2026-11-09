@@ -268,7 +268,7 @@ void BlueSteelLookAndFeel::drawButtonBackground(
     graphics.fillRoundedRectangle(bounds.translated(0.0f, 1.0f), 6.0f);
 
     graphics.setGradientFill(juce::ColourGradient(
-        base.brighter(isButtonDown ? 0.12f : 0.04f) + highlight,
+        base.brighter(isButtonDown ? 0.12f : 0.04f).interpolatedWith(highlight, 0.35f),
         bounds.getX(), bounds.getY(),
         base.darker(0.26f), bounds.getX(), bounds.getBottom(),
         false));
@@ -447,7 +447,7 @@ public:
 
     void resized() override
     {
-        const auto bounds = getLocalBounds();
+        auto bounds = getLocalBounds();
         caption.setBounds(bounds.removeFromTop(18));
 
         const auto knobSize = juce::jmax(
